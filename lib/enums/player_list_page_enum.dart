@@ -1,0 +1,4 @@
+enum PlayerListPageEnum{
+  view,
+  edit
+}
