@@ -1,0 +1,4 @@
+enum PageEnum{
+  home,
+  setting
+}

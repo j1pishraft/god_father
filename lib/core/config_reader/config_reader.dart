@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:god_father/core/environments.dart';
+import 'package:god_father/core/app_envs.dart';
+
 
 abstract class ConfigReader {
   static Map<String, dynamic>? _config;
@@ -15,9 +16,8 @@ abstract class ConfigReader {
     _config = json.decode(configString) as Map<String, dynamic>;
   }
 
-  static String getAppBarColor() {
-    return _config!['appBarColor'];
-  }
+  static String get getAppBarColor => _config!['appBarColor'];
+
 
   static String getSecretKey() {
     return _config!['secretKey'] as String;
