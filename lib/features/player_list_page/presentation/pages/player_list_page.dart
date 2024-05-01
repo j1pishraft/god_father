@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 
+import '../../../../core/config_reader/config_reader.dart';
 import '../../../../injection_container.dart';
 import '../../domain/entities/player_entity.dart';
 import '../bloc/player_list_bloc.dart';
@@ -29,6 +30,7 @@ class PlayerListPage extends StatelessWidget {
         onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
         child:Scaffold(
           appBar: AppBar(
+            // backgroundColor:  Color(int.parse(ConfigReader.getAppBarColor)),
             leading: IconButton(
               onPressed: onMenuPressed,
               icon: const Icon(Icons.menu),

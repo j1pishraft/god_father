@@ -21,3 +21,11 @@ class GetAppLanguage extends SettingEvent {
   @override
   List<Object> get props => [];
 }
+
+class ThemeChangePressed extends SettingEvent {
+  const ThemeChangePressed({required this.isDark});
+  final bool isDark;
+
+  @override
+  List<Object> get props => [isDark];
+}

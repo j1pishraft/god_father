@@ -26,7 +26,7 @@ Future<void> init() async {
 
   //! Features - Settings
 
-  sl.registerFactory(() => SettingsBloc(
+  sl.registerLazySingleton(() => SettingsBloc(
         getAppLanguageUsecase: sl(),
         changeAppLanguageUsecase: sl(),
       ));

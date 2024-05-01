@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:god_father/core/appThemes/app_themes.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../../../enums/language_enum.dart';
@@ -20,6 +21,7 @@ class SettingsBloc extends Bloc<SettingEvent, SettingState> {
   SettingsBloc({required this.changeAppLanguageUsecase, required this.getAppLanguageUsecase}) : super(const SettingState()) {
     on<GetAppLanguage>(_onGetAppLanguage);
     on<ChangeLanguagePressed>(_onChangeLanguage);
+    on<ThemeChangePressed>(_onThemeChangePressed);
   }
 
   FutureOr<void> _onGetAppLanguage(GetAppLanguage event, Emitter<SettingState> emit) async{
@@ -49,4 +51,9 @@ class SettingsBloc extends Bloc<SettingEvent, SettingState> {
   }
 
 
+
+  FutureOr<void> _onThemeChangePressed(ThemeChangePressed event, Emitter<SettingState> emit) {
+
+    emit(state.copyWith( themeMode: event.isDark ? ThemeMode.dark : ThemeMode.light));
+  }
 }

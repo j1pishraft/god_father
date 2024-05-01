@@ -21,8 +21,8 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: BlocSelector<SettingsBloc, SettingState, (String, AssetImage)>(
-              selector: (state) => (state.selectedLanguage.text, state.selectedLanguage.flag),
+            child: BlocSelector<SettingsBloc, SettingState, (String?, AssetImage?)>(
+              selector: (state) => (state.selectedLanguage?.text, state.selectedLanguage?.flag),
               builder: (context, language) {
                 final name = language.$1;
                 final flag = language.$2;
@@ -36,11 +36,11 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
                       //   style: TextStyle(fontSize: 30),
                       // ),
                       child: Image(
-                        image: flag,
+                        image: flag!,
                         height: 30,
                       ),
                     ),
-                    Text(name),
+                    Text(name!),
                   ],
                 );
               },

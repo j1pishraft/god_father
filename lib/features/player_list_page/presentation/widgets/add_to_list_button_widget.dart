@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../setting_page/presentation/bloc/setting_bloc.dart';
 import '../../domain/entities/player_entity.dart';
 import '../bloc/player_list_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -99,8 +100,8 @@ class AddToListButton extends StatelessWidget {
                                         }
                                       : null,
                                   child: Text(
-                                    l10n.addPlayer,
-                                    style: const TextStyle(color: Colors.white),
+                                    l10n.addPlayer, style: TextStyle(color: context.read<SettingsBloc>().state.themeMode == ThemeMode.dark ? Colors.red : Colors.green,),
+                                    // style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),

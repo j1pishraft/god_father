@@ -5,7 +5,7 @@ import '../../../../core/usecases/usecase.dart';
 import '../repositories/players_list_repository.dart';
 
 
-class ClearPlayersListUsecase implements UseCase<bool, NoParams> {
+class ClearPlayersListUsecase extends UseCase<bool, NoParams> {
   final PlayerListRepository repository;
 
   ClearPlayersListUsecase(this.repository);
