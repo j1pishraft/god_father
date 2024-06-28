@@ -8,7 +8,7 @@ class MessageDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
+      child: SizedBox(
         height: MediaQuery.of(context).size.height / 3,
         child:  Center(
             child: Text(

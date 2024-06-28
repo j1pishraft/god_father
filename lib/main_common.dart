@@ -1,16 +1,11 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:god_father/core/appThemes/gf_app_themes.dart';
-import 'package:god_father/core/app_envs.dart';
 import 'package:god_father/enums/language_enum.dart';
 import 'package:god_father/features/setting_page/presentation/bloc/setting_bloc.dart';
-import 'package:god_father/routes/router.dart';
+import 'app/routes/app_router.dart';
 import 'core/appThemes/app_themes.dart';
-import 'core/config_reader/config_reader.dart';
 
-import 'features/player_list_page/presentation/pages/player_list_page.dart';
-import 'features/side_drawer/presentation/pages/side_drawer.dart';
+import 'features/side_drawer/presentation/pages/side_drawer_page.dart';
 import 'flavor_config.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter/material.dart';
@@ -23,7 +18,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> mainCommon(String env) async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await ConfigReader.initialize(env);
+  // await ConfigReader.initialize(env);
   FlavorConfig(env: env, settings: baseMapSettings[env]!);
 
   await di.init();
@@ -59,7 +54,10 @@ class _MyAppState extends State<MyApp> {
               final locale = item.$1;
               final themeMode = item.$2;
               ThemeManager.toggleTheme(themeMode!);
-              return MaterialApp(
+              return MaterialApp.router(
+                routeInformationProvider: AppRouter.router.routeInformationProvider,
+                routeInformationParser: AppRouter.router.routeInformationParser,
+                routerDelegate: AppRouter.router.routerDelegate,
                 key: navigatorKey,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
@@ -69,7 +67,7 @@ class _MyAppState extends State<MyApp> {
                 debugShowCheckedModeBanner: false,
                 theme: AppThemes.appThemeData[themeMode],
                 // home: const PlayerListPage(),
-                home: const SideDrawer(),
+                // home: const SideDrawerPage(),
               );
             },
           )

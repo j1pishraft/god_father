@@ -11,12 +11,11 @@ enum PlayerListStatus {
 
 class PlayerListState extends Equatable {
 
-  const PlayerListState( {this.isNameDuplicated = false, this.isDeleteViewPressed = false, this.status = PlayerListStatus.initial, this.playerName = '', this.errorMessage = '', this.textFieldError = '', this.players, this.isAllSelected});
+  const PlayerListState( {this.isNameDuplicated = false, this.isDeleteViewPressed = false, this.status = PlayerListStatus.initial, this.playerName = '', this.errorMessage = '', this.players, this.isAllSelected});
 
   final PlayerListStatus status;
   final String playerName;
   final String? errorMessage;
-  final String? textFieldError;
   final bool? isNameDuplicated;
   final bool? isDeleteViewPressed;
   final List<Player>? players;
@@ -33,12 +32,10 @@ class PlayerListState extends Equatable {
     List<Player>? players,
     bool? isAllSelected,
 }) {
-
     return PlayerListState(
       status: status ?? this.status,
       playerName: playerName ?? this.playerName,
       errorMessage: errorMessage ?? this.errorMessage,
-      textFieldError: textFieldError ?? '',
       isNameDuplicated: isNameDuplicated ?? false,
       isDeleteViewPressed: isDeleteViewPressed ?? this.isDeleteViewPressed,
       players: players ?? this.players,
@@ -47,6 +44,6 @@ class PlayerListState extends Equatable {
 }
 
   @override
-  List<Object?> get props => [status,playerName,players,isNameDuplicated,errorMessage, textFieldError,isDeleteViewPressed, isAllSelected];
+  List<Object?> get props => [status,playerName,players,isNameDuplicated,errorMessage,isDeleteViewPressed, isAllSelected];
 
 }

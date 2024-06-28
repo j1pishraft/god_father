@@ -231,7 +231,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					331C8080294A63A400263BE5 = {
@@ -615,7 +615,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = MKN4DD8C5S;
 				ENABLE_BITCODE = NO;
-				FLUTTER_TARGET = "/Users/jay/Desktop/srkk_projects/Companies test/god_father/lib/main_dev.dart";
+				FLUTTER_TARGET = /Users/mac/Desktop/Projects/god_father_flutter/lib/main_dev.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,7 +808,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = MKN4DD8C5S;
 				ENABLE_BITCODE = NO;
-				FLUTTER_TARGET = "/Users/jay/Desktop/srkk_projects/Companies test/god_father/lib/main_dev.dart";
+				FLUTTER_TARGET = /Users/mac/Desktop/Projects/god_father_flutter/lib/main_dev.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

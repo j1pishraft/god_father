@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../setting_page/presentation/bloc/setting_bloc.dart';
+import 'package:god_father/core/appThemes/custom_style.dart';
+import 'package:god_father/core/widgets/custom_elevated_button.dart';
+import '../../../../app/routes/app_router.dart';
+import '../../../../app/routes/route_utils.dart';
 import '../../domain/entities/player_entity.dart';
 import '../bloc/player_list_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,10 +28,11 @@ class AddToListButton extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      style: const TextStyle(color: Colors.yellow),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
                         if (isNameDuplicated == true) {
-                          return bloc.state.textFieldError;
+                          return l10n.playerNameAlreadyExisted;
                         } else {
                           return null;
                         }
@@ -39,13 +42,21 @@ class AddToListButton extends StatelessWidget {
                       // to trigger disabledBorder
                       decoration: InputDecoration(
                           filled: true,
-                          fillColor: Colors.grey.shade200,
-                          enabledBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)), borderSide: BorderSide(width: 1, color: Colors.blue)),
-                          focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)), borderSide: BorderSide(width: 1.5, color: Colors.blue)),
-                          errorBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)), borderSide: BorderSide(width: 1, color: Colors.red)),
-                          focusedErrorBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)), borderSide: BorderSide(width: 1, color: Colors.red)),
+                          fillColor: Colors.transparent.withOpacity(0.5),
+                          enabledBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(width: 1, color: Colors.yellow)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(width: 1.5, color: Colors.yellow)),
+                          errorBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(width: 1, color: Colors.red)),
+                          focusedErrorBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(width: 1, color: Colors.red)),
                           labelText: l10n.enterPlayerName,
-                          labelStyle: const TextStyle(fontSize: 16, color: Colors.blue),
+                          labelStyle: const TextStyle(fontSize: 16, color: Colors.yellow),
                           errorMaxLines: 1),
                       onChanged: (value) {
                         // context.read<PlayerListBloc>().add(PlayerListNameChanged(value));
@@ -63,7 +74,8 @@ class AddToListButton extends StatelessWidget {
           children: [
             Expanded(
               child: BlocSelector<PlayerListBloc, PlayerListState, (String?, bool?, bool?, List<Player>?)>(
-                selector: (state) => (state.playerName, state.isNameDuplicated, state.isDeleteViewPressed, state.players),
+                selector: (state) =>
+                    (state.playerName, state.isNameDuplicated, state.isDeleteViewPressed, state.players),
                 builder: (context, items) {
                   final playerName = items.$1;
                   final isNameDuplicated = items.$2;
@@ -72,18 +84,16 @@ class AddToListButton extends StatelessWidget {
                   return isDeleteViewPressed ?? false
                       ? Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(backgroundColor: Colors.red, fixedSize: const Size.fromHeight(60)),
+                          child: CustomElevatedButton(
+                            title: 'Delete selected player(s)',
+                            backgroundColor: CustomColor.customRed,
                             onPressed: players?.any((player) => player.isSelected) ?? false
                                 ? () {
-                                    bloc.add(const PlayerListDeleteSelectedItemPressed());
+                                    bloc.add(const PlayerListDeleteSelectedPlayersPressed());
+
                                     // AutoRouter.of(context).push(const PlayerListRoute());
                                   }
                                 : null,
-                            child: const Text(
-                              'Delete selected player(s)',
-                              style: TextStyle(color: Colors.white),
-                            ),
                           ),
                         )
                       : Row(
@@ -91,31 +101,24 @@ class AddToListButton extends StatelessWidget {
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, fixedSize: const Size.fromHeight(60)),
+                                child: CustomElevatedButton(
+                                  title: l10n.addPlayer,
+                                  backgroundColor: CustomColor.addButtonColor,
                                   onPressed: isNameDuplicated == false && playerName?.isNotEmpty == true
                                       ? () {
                                           bloc.add(const PlayerListAddPressed());
-                                          // AutoRouter.of(context).push(const PlayerListRoute());
                                         }
                                       : null,
-                                  child: Text(
-                                    l10n.addPlayer, style: TextStyle(color: context.read<SettingsBloc>().state.themeMode == ThemeMode.dark ? Colors.red : Colors.green,),
-                                    // style: const TextStyle(color: Colors.white),
-                                  ),
                                 ),
                               ),
                             ),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, fixedSize: const Size.fromHeight(60)),
-                                  onPressed: null,
-                                  child: const Text(
-                                    'Select roles',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+                                child: CustomElevatedButton(
+                                  title: 'Select role',
+                                  backgroundColor: CustomColor.addButtonColor,
+                                  onPressed: ()=> AppRouter.router.push(PAGES.selectRoles.screenPath),
                                 ),
                               ),
                             ),

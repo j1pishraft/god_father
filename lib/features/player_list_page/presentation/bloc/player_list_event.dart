@@ -15,8 +15,8 @@ class PlayerListAddPressed extends PlayerListEvent {
   const PlayerListAddPressed();
 }
 
-class PlayerListDeleteSelectedItemPressed extends PlayerListEvent {
-  const PlayerListDeleteSelectedItemPressed();
+class PlayerListDeleteSelectedPlayersPressed extends PlayerListEvent {
+  const PlayerListDeleteSelectedPlayersPressed();
 }
 
 
@@ -38,9 +38,14 @@ class PlayerListDeActiveSelected extends PlayerListEvent {
   const PlayerListDeActiveSelected(this.player);
 }
 
-class PlayerSelected extends PlayerListEvent {
+class PlayerSelectedInDeleteView extends PlayerListEvent {
   final Player? player;
-  const PlayerSelected(this.player);
+  const PlayerSelectedInDeleteView(this.player);
+}
+
+class InputError extends PlayerListEvent {
+  final String? inputError;
+  const InputError(this.inputError);
 }
 
 class PlayerListSelectAllPressed extends PlayerListEvent {

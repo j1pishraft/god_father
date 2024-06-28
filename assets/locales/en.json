@@ -1,3 +1,4 @@
 {
-  "playerList" : "Player List"
+  "playerList" : "Player List",
+  "PlayerNameAlreadyExisted" : "Player name already existed"
 }

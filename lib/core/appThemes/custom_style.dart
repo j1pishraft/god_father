@@ -1,8 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:god_father/core/appThemes/app_themes.dart';
+import 'package:god_father/core/constants/color_const.dart';
 
 extension CustomStyles on TextTheme {
-  TextStyle get error {
+  static TextStyle get heading1 {
+    return const TextStyle(
+      fontSize: 20.0,
+      color: Colors.yellow,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle get sideMenuButtonTextStyle {
+    return const TextStyle(
+      fontSize: 18,
+      color: Colors.yellow,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle get homePageListTileTestStyle {
+    return const TextStyle(
+      fontSize: 18,
+      color: Colors.yellow,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle get error {
     return TextStyle(
       fontSize: 18.0,
       color: Colors.blue.shade900,
@@ -10,7 +35,7 @@ extension CustomStyles on TextTheme {
     );
   }
 
-  TextStyle get errorDark {
+  static TextStyle get errorDark {
     return const TextStyle(
       fontSize: 18.0,
       color: Colors.red,
@@ -20,12 +45,41 @@ extension CustomStyles on TextTheme {
 }
 
 extension CustomColor on Color {
-  Color get homeListCardBackGroundColor {
+ static Color get homeListCardBackGroundColor {
     return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.green : Colors.red;
   }
 
+ static Color get yellowWhiteColor {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.yellow : Colors.white ;
+  }
+
+  static Color get addButtonColor {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.green.shade500 : Colors.green.shade800;
+  }
+
+
+  static Color get backGroundColor {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.grey.shade300 : Colors.red.shade900;
+  }
+
+  static Color get homePageDeleteModeBackgroundColor {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.red.shade100 : Colors.red.shade200;
+  }
+
+  static Color get appbarColor {
+    return Colors.transparent.withOpacity(0.5);
+  }
+
+  static Color get customRed {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.red : Colors.red.shade700;
+  }
+
+  static Color get lightWhiteBlackColor {
+    return ThemeManager.currentThemeMode == ThemeMode.light ?  Colors.transparent.withOpacity(0.2): Colors.transparent.withOpacity(0.6);
+  }
+
   Color get sideMenuBackGroundColor {
-    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.white : Colors.grey.shade800;
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.white: Colors.red.shade800;
   }
 
   Color get textColor {
@@ -37,15 +91,15 @@ extension CustomColor on Color {
   }
 
   Color get switchActiveTrackColor {
-    return Colors.grey;
+    return Colors.black38;
   }
 
   Color get switchInactiveTrackColor {
-    return Colors.blue;
+    return Colors.transparent;
   }
 
   Color get trackOutlineColor {
-    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.grey.shade700 : Colors.blue;
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.yellow : Colors.yellow.shade500;
   }
 
 }

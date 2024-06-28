@@ -1,6 +1,10 @@
 {
   "playerList" : "لیست بازیکنان",
+  "removePlayer" : "حذف بازیکن",
+  "darkMode" : "حالت تیره",
+  "lightMode" : "حال روشن",
   "enterPlayerName" : "نام بازیکن را وارد کنید.",
+  "playerNameAlreadyExisted" : "اسم تکراری است",
   "addPlayer" : "اضافه کردن",
   "chooseLanguage" : "انتخاب زبان",
   "homePage": "صفحه اصلی",

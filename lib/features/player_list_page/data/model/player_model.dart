@@ -3,8 +3,11 @@
 import '../../domain/entities/player_entity.dart';
 
 class PlayerModel extends Player {
+  @override
   final String name;
+  @override
   final String role;
+  @override
   final bool isActive;
 
    const PlayerModel({

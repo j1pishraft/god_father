@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:god_father/core/appThemes/custom_style.dart';
 
+import '../../../../core/constants/color_const.dart';
 import '../../../../enums/language_enum.dart';
 import '../bloc/setting_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,9 +15,10 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
     return OutlinedButton(
       onPressed: () => showLanguageBottomSheet(context),
       style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.black.withOpacity(0.3),
         padding: const EdgeInsets.all(8.0),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(15.0),
         ),
       ),
       child: Row(
@@ -37,18 +40,19 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
                       // ),
                       child: Image(
                         image: flag!,
-                        height: 30,
+                        height: 35,
                       ),
                     ),
-                    Text(name!),
+                    Text(name!, style: const TextStyle(fontSize: 18, color: Colors.white,),),
                   ],
                 );
               },
             ),
           ),
-          const Icon(
+           Icon(
             Icons.arrow_drop_down_rounded,
-            color: Colors.red,
+            size: 35,
+            color: Colors.yellow.shade500,
           ),
         ],
       ),
@@ -57,7 +61,7 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
 
   void showLanguageBottomSheet(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    showModalBottomSheet(
+    showModalBottomSheet(backgroundColor: Colors.black.withOpacity(0.5),
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -73,6 +77,7 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
             children: [
               Text(
                 l10n.chooseLanguage,
+                style: const TextStyle(color: Colors.white, fontSize: 15),
               ),
               const SizedBox(height: 16.0),
               BlocBuilder<SettingsBloc, SettingState>(
@@ -91,18 +96,18 @@ class ChooseLanguageBottomSheet extends StatelessWidget {
                         },
                         // leading: ClipOval(child: Text(Language.values[index].flag, style: TextStyle(fontSize: 30))),
                         leading: Image(image: Language.values[index].flag, height: 30),
-                        title: Text(Language.values[index].text, style: const TextStyle(fontSize: 16)),
+                        title: Text(Language.values[index].text, style: const TextStyle(fontSize: 16, color: Colors.white)),
                         trailing: Language.values[index] == state.selectedLanguage
-                            ? const Icon(
+                            ?  Icon(
                                 Icons.check_circle_rounded,
-                                color: Colors.red,
+                                color: Colors.yellow.shade200,
                               )
                             : null,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: Language.values[index] == state.selectedLanguage
                               ? const BorderSide(
-                                  color: Colors.red,
+                                  color: Colors.yellow,
                                   width: 1.5,
                                 )
                               : BorderSide(

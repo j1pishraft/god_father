@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:god_father/core/appThemes/app_themes.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../../../enums/language_enum.dart';
@@ -15,10 +14,10 @@ part 'setting_state.dart';
 
 
 class SettingsBloc extends Bloc<SettingEvent, SettingState> {
-  final GetAppLanguageUsecase getAppLanguageUsecase;
-  final ChangeAppLanguageUsecase changeAppLanguageUsecase;
+  final GetAppLanguageUsecase getAppLanguageUseCase;
+  final ChangeAppLanguageUsecase changeAppLanguageUseCase;
 
-  SettingsBloc({required this.changeAppLanguageUsecase, required this.getAppLanguageUsecase}) : super(const SettingState()) {
+  SettingsBloc({required this.changeAppLanguageUseCase, required this.getAppLanguageUseCase}) : super(const SettingState()) {
     on<GetAppLanguage>(_onGetAppLanguage);
     on<ChangeLanguagePressed>(_onChangeLanguage);
     on<ThemeChangePressed>(_onThemeChangePressed);
@@ -28,7 +27,7 @@ class SettingsBloc extends Bloc<SettingEvent, SettingState> {
 
 
 
-    final appLanguage = await getAppLanguageUsecase(NoParams());
+    final appLanguage = await getAppLanguageUseCase(NoParams());
     if(appLanguage == null){
       emit(state.copyWith(selectedLanguage: Language.values[0]));
     }else {
@@ -38,7 +37,7 @@ class SettingsBloc extends Bloc<SettingEvent, SettingState> {
 
   _onChangeLanguage(ChangeLanguagePressed event, Emitter<SettingState> emit) async {
     debugPrint('${state.selectedLanguage}');
-    final appLocale = await changeAppLanguageUsecase(ChangeAppLanguageUsecaseParams(appLanguage: event.selectedLanguage));
+    final appLocale = await changeAppLanguageUseCase(ChangeAppLanguageUsecaseParams(appLanguage: event.selectedLanguage));
 
     appLocale.fold(
           (failure) => emit(const SettingState()),

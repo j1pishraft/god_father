@@ -1,5 +1,9 @@
 {
   "playerList" : "Player List",
+  "removePlayer" : "Remove Player",
+  "darkMode" : "Dark Mode",
+  "lightMode" : "Light Mode",
+  "playerNameAlreadyExisted" : "Player name already existed",
   "enterPlayerName" : "Enter player name",
   "addPlayer" : "Add",
   "chooseLanguage" : "Choose language",

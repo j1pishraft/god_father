@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../domain/entities/player_entity.dart';
@@ -20,15 +21,15 @@ const String cacheFailureMessage = 'Cache Failure';
 const String invalidInputFailureMessage = 'Invalid Input - the number must be a positive number or zero.';
 
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
-  final GetPlayersListUsecase getPlayersListUsecase;
-  final UpdatePlayersListUsecase updatePlayersListUsecase;
-  final ClearPlayersListUsecase clearPlayersListUsecase;
+  final GetPlayersListUsecase getPlayersListUseCase;
+  final UpdatePlayersListUsecase updatePlayersListUseCase;
+  final ClearPlayersListUsecase clearPlayersListUseCase;
 
   TextEditingController textEditingController = TextEditingController();
-  ScrollController scrollController = ScrollController();
+  ItemScrollController scrollController = ItemScrollController();
   FocusNode focusNode = FocusNode();
 
-  PlayerListBloc({required this.clearPlayersListUsecase, required this.getPlayersListUsecase, required this.updatePlayersListUsecase}) : super(const PlayerListState()) {
+  PlayerListBloc({required this.clearPlayersListUseCase, required this.getPlayersListUseCase, required this.updatePlayersListUseCase}) : super(const PlayerListState()) {
     on<PlayerListStarted>(_onPlayersFetched);
     on<PlayerListAddPressed>(_onPlayerAdded);
     on<PlayerListNameChanged>(_onPlayerNameChanged);
@@ -36,15 +37,15 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     on<PlayerListDeleteViewButtonPressed>(_onPlayerListDeleteViewButtonPressed);
     on<PlayerListDeActiveSelected>(_onPlayerListDeActiveSelected);
     on<PlayerListSelectAllPressed>(_onPlayerListSelectAllPressed);
-    on<PlayerSelected>(_onPlayerSelected);
-    on<PlayerListDeleteSelectedItemPressed>(_onPlayerListDeletePressed);
+    on<PlayerSelectedInDeleteView>(_onPlayerSelectedInDeleteView);
+    on<PlayerListDeleteSelectedPlayersPressed>(_onPlayerListDeleteSelectedPlayersPressed);
   }
 
   FutureOr<void> _onPlayersFetched(PlayerListStarted event, Emitter<PlayerListState> emit) async {
     debugPrint("List Length${state.players?.length}");
 
     emit(state.copyWith(status: PlayerListStatus.loading));
-    final players = await getPlayersListUsecase(NoParams());
+    final players = await getPlayersListUseCase(NoParams());
     emit(state.copyWith(status: PlayerListStatus.loaded, players: players, isAllSelected: _isAllSelected(players)));
   }
 
@@ -69,16 +70,31 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
       // final newList = [...currentList, player];
 
       List<Player> currentList = state.players ?? [];
-      currentList.add(player);
+      // Find the last player with isActive == true
+      int lastActiveIndex = currentList.lastIndexWhere((player) => player.isActive);
+      // Check if the list is empty
+      if (currentList.isEmpty) {
+        currentList.add(player);
+      } else {
 
-      final failureOrPlayerList = await updatePlayersListUsecase(UpdatePlayersListUsecaseParams(players: currentList));
+        // int lastIndex = currentList.lastIndexWhere((player) => player.isActive);
+
+        // Add new player after the last active player or to the top if no active player found
+        if (lastActiveIndex != -1) {
+          currentList.insert(lastActiveIndex + 1, player);
+        } else {
+          currentList.insert(0, player);
+        }
+      }
+
+      final failureOrPlayerList = await updatePlayersListUseCase(UpdatePlayersListUsecaseParams(players: currentList));
 
       failureOrPlayerList.fold(
         (failure) => emit(PlayerListState(status: PlayerListStatus.error, errorMessage: failure.message)),
         (players) {
           emit(state.copyWith(status: PlayerListStatus.loaded, players: players, playerName: '', isAllSelected: _isAllSelected(players)));
-          if (scrollController.hasClients == true) {
-            scrollController.jumpTo(scrollController.position.maxScrollExtent + 70);
+          if (scrollController.isAttached == true) {
+            scrollController.jumpTo(index: lastActiveIndex,);
           }
           textEditingController.clear();
         },
@@ -95,14 +111,14 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     _isPlayerNameDuplicated(emit);
   }
 
-  FutureOr<void> _isPlayerNameDuplicated(Emitter<PlayerListState> emit) {
+  FutureOr<void> _isPlayerNameDuplicated(emit) {
     if (state.players != null) {
       if (state.players!.any((player) => player.name.toLowerCase().trim() == state.playerName.toLowerCase().trim())) {
-        emit(state.copyWith(isNameDuplicated: true, textFieldError: 'Player name already existed'));
+        emit(state.copyWith(isNameDuplicated: true));
       }
     }
 
-    String _mapFailureToMessage(Failure failure) {
+    String mapFailureToMessage(Failure failure) {
       switch (failure.runtimeType) {
         case ServerFailure _:
           return serverFailureMessage;
@@ -116,23 +132,23 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
 
   FutureOr<void> _onPlayerListClearPressed(PlayerListClearPressed event, Emitter<PlayerListState> emit) async {
     emit(state.copyWith(status: PlayerListStatus.loading));
-    final failureOrCleared = await clearPlayersListUsecase(NoParams());
+    final failureOrCleared = await clearPlayersListUseCase(NoParams());
     failureOrCleared.fold((failure) => emit(state.copyWith(status: PlayerListStatus.error, errorMessage: failure.message)), (isCleared) {
       emit(state.copyWith(status: PlayerListStatus.loaded, players: [], isAllSelected: false));
     });
   }
 
   FutureOr<void> _onPlayerListDeleteViewButtonPressed(PlayerListDeleteViewButtonPressed event, Emitter<PlayerListState> emit) {
-    bool isDeleted = state.isDeleteViewPressed ?? false;
+    bool isDeleteViewPressed = !state.isDeleteViewPressed! ?? false;
     List<Player> updatedPlayers = [];
-    if (isDeleted == false) {
+    if (isDeleteViewPressed) {
       updatedPlayers = state.players!.map((player) {
         return player.copyWith(isSelected: false);
       }).toList();
-      emit(state.copyWith(isDeleteViewPressed: !isDeleted, players: updatedPlayers, isAllSelected: _isAllSelected(updatedPlayers)));
+      emit(state.copyWith(isDeleteViewPressed: isDeleteViewPressed, players: updatedPlayers, isAllSelected: _isAllSelected(updatedPlayers)));
     } else {
       emit(state.copyWith(
-        isDeleteViewPressed: !isDeleted,
+        isDeleteViewPressed: isDeleteViewPressed,
       ));
     }
   }
@@ -181,7 +197,7 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
       }
     }
 
-    final failureOrPlayerList = await updatePlayersListUsecase(UpdatePlayersListUsecaseParams(players: updatedPlayers));
+    final failureOrPlayerList = await updatePlayersListUseCase(UpdatePlayersListUsecaseParams(players: updatedPlayers));
 
     failureOrPlayerList.fold(
       (failure) => emit(PlayerListState(status: PlayerListStatus.error, errorMessage: failure.message)),
@@ -207,7 +223,7 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     // emit(state.copyWith(players: tempList));
   }
 
-  FutureOr<void> _onPlayerSelected(PlayerSelected event, Emitter<PlayerListState> emit) {
+  FutureOr<void> _onPlayerSelectedInDeleteView(PlayerSelectedInDeleteView event, Emitter<PlayerListState> emit) {
     // List<Player> tempList = [...state.players ?? []];
     // int? index =tempList.indexWhere((element) => element.name == event.player.name);
     // if(index != -1){
@@ -264,21 +280,25 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     emit(state.copyWith(players: tempList, isAllSelected: event.isSelected));
   }
 
-  FutureOr<void> _onPlayerListDeletePressed(PlayerListDeleteSelectedItemPressed event, Emitter<PlayerListState> emit) async {
+  FutureOr<void> _onPlayerListDeleteSelectedPlayersPressed(PlayerListDeleteSelectedPlayersPressed event, Emitter<PlayerListState> emit) async {
     // emit(state.copyWith(players: []));
 
     List<Player> playersWithSelectedFalse = state.players?.where((player) => !player.isSelected).toList() ?? [];
 
-    final failureOrPlayerList = await updatePlayersListUsecase(UpdatePlayersListUsecaseParams(players: playersWithSelectedFalse));
+    final failureOrPlayerList = await updatePlayersListUseCase(UpdatePlayersListUsecaseParams(players: playersWithSelectedFalse));
 
     failureOrPlayerList.fold(
         (failure) => emit(
               PlayerListState(status: PlayerListStatus.error, errorMessage: failure.message),
             ), (players) {
       emit(state.copyWith(status: PlayerListStatus.loaded, players: [...players], playerName: '', isDeleteViewPressed: players.isEmpty ? false : true));
-      if (scrollController.hasClients == true) {
-        scrollController.jumpTo(scrollController.position.maxScrollExtent + 70);
-      }
+      // if (scrollController.hasClients == true) {
+      //   scrollController.jumpTo(scrollController.position.maxScrollExtent + 70);
+      // }
+
+      // if (scrollController.isAttached == true) {
+      //   scrollController.jumpTo(index: lastActiveIndex,);
+      // }
       textEditingController.clear();
     });
   }

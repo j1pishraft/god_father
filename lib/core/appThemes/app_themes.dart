@@ -38,7 +38,7 @@ class AppThemes {
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.purple,
       ).copyWith(
-        background: Colors.white,
+        surface: Colors.white,
       ),
     ),
     ThemeMode.dark: ThemeData(
@@ -51,7 +51,7 @@ class AppThemes {
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.teal,
       ).copyWith(
-        background: Colors.black,
+        surface: Colors.black,
       ),
     )
   };

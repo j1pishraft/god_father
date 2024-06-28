@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:god_father/core/app_envs.dart';
-import 'dart:math';
 
-import 'core/config_reader/config_reader.dart';
 
 
 class FlavorSettings {
@@ -83,7 +81,7 @@ String bracketCombinations(int num) {
 
     print((n == 0 || n == 1) ? '1' : '$n * ${factorial(n - 1)}');
     return (n == 0 || n == 1) ? '1' : '$n * ${factorial(n - 1)}';
-  };
+  }
 
   // Calculate the Catalan number using the formula
   return factorial(num);

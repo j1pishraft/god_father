@@ -27,8 +27,8 @@ Future<void> init() async {
   //! Features - Settings
 
   sl.registerLazySingleton(() => SettingsBloc(
-        getAppLanguageUsecase: sl(),
-        changeAppLanguageUsecase: sl(),
+        getAppLanguageUseCase: sl(),
+        changeAppLanguageUseCase: sl(),
       ));
 
   // Use cases
@@ -48,11 +48,11 @@ Future<void> init() async {
         sharedPreferences: sl(),
       ));
 
-  //! Features - NumberTrivia
+  //! Features - PlayerList
   sl.registerFactory(() => PlayerListBloc(
-        getPlayersListUsecase: sl(),
-        updatePlayersListUsecase: sl(),
-        clearPlayersListUsecase: sl(),
+        getPlayersListUseCase: sl(),
+        updatePlayersListUseCase: sl(),
+        clearPlayersListUseCase: sl(),
       ));
 
   // Use cases
