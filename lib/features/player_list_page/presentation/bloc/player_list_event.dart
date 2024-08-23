@@ -7,12 +7,12 @@ abstract class PlayerListEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PlayerListStarted extends PlayerListEvent {}
+class PlayerListFetched extends PlayerListEvent {}
 
 
 
-class PlayerListAddPressed extends PlayerListEvent {
-  const PlayerListAddPressed();
+class PlayerListAddButtonPressed extends PlayerListEvent {
+  const PlayerListAddButtonPressed();
 }
 
 class PlayerListDeleteSelectedPlayersPressed extends PlayerListEvent {
@@ -20,9 +20,9 @@ class PlayerListDeleteSelectedPlayersPressed extends PlayerListEvent {
 }
 
 
-class PlayerListNameChanged extends PlayerListEvent {
+class PlayerNameChanged extends PlayerListEvent {
   final String playerName;
-  const PlayerListNameChanged(this.playerName);
+  const PlayerNameChanged(this.playerName);
 }
 
 class PlayerListClearPressed extends PlayerListEvent {
@@ -33,14 +33,26 @@ class PlayerListDeleteViewButtonPressed extends PlayerListEvent {
   const PlayerListDeleteViewButtonPressed();
 }
 
-class PlayerListDeActiveSelected extends PlayerListEvent {
+class PlayerListIsActiveSelected extends PlayerListEvent {
   final Player? player;
-  const PlayerListDeActiveSelected(this.player);
+  final bool inActiveTile;
+  final int index;
+
+  const PlayerListIsActiveSelected(this.player, this.inActiveTile, this.index);
 }
 
 class PlayerSelectedInDeleteView extends PlayerListEvent {
   final Player? player;
-  const PlayerSelectedInDeleteView(this.player);
+  final bool inActiveTile;
+  final bool checkboxValue;
+  final int index;
+  const PlayerSelectedInDeleteView(this.player, this.inActiveTile, this.index, this.checkboxValue);
+}
+
+class ListHeaderPressed extends PlayerListEvent {
+  final bool isExpanded;
+  final bool isActiveList;
+  const ListHeaderPressed(this.isExpanded, this.isActiveList);
 }
 
 class InputError extends PlayerListEvent {

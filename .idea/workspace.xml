@@ -10,39 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdabae1c-44c0-44ed-a4d6-bd4ada95b58f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/god_father_flutter.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/godfather.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/app/routes/app_router.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/app/routes/route_utils.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/core/widgets/custom_elevated_button.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/data/model/role_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/domain/entities/role_entity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/pages/role_list_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/side_drawer/presentation/pages/side_menu_background_image.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/side_drawer/presentation/pages/side_menu_buttons_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.fvm/flutter_sdk" beforeDir="false" afterPath="$PROJECT_DIR$/.fvm/flutter_sdk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.fvm/fvm_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.fvm/fvm_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/json/playerRolesJson/player_roles_en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/beep.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/utils/utils.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/widgets/custom_check_box.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/widgets/custom_expanded_tile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/widgets/custom_toast.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/data/dataSoources/player_roles_local_data_source.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/data/repossitories/player_roles_repository_impl.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/domain/entities/player_role_entity.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/domain/repositories/player_role_list_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/domain/usecases/get_role_list_usecase.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/pages/assign_role_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/pages/show_player_roles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/god_father_flutter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/god_father_flutter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/locales/fa.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locales/fa.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/appThemes/app_themes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/appThemes/app_themes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/routes/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/routes/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/routes/route_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/routes/route_utils.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/appThemes/custom_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/appThemes/custom_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/constants/color_const.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/constants/color_const.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/constants/constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/l10n/app_en.arb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/l10n/app_en.arb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/l10n/app_fa.arb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/l10n/app_fa.arb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/widgets/custom_elevated_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/custom_elevated_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/data/dataSources/players_list_local_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/data/dataSources/player_list_local_data_source.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/data/model/player_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/data/model/player_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/data/repositories/players_list_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/data/repositories/player_list_repository_impl.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/domain/entities/player_entity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/domain/entities/player_entity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/domain/repositories/players_list_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/domain/repositories/player_list_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/clear_player_list_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/clear_player_list_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/get_players_list_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/get_player_list_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/update_players_list_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/domain/usecases/update_player_list_usecase.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_event.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_state.dart" afterDir="false" />
@@ -50,17 +51,22 @@
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/add_to_list_button_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/add_to_list_button_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/list_display.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/list_display.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/message_display.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/message_display.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/data/model/role_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/role_list_page/data/model/player_role_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/domain/entities/role_entity.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/setting_page/data/model/app_language_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting_page/data/model/app_language_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/setting_page/presentation/bloc/setting_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting_page/presentation/bloc/setting_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/bloc/role_list_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/role_list_page/presentation/pages/role_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/role_list_page/presentation/pages/role_list_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/setting_page/presentation/pages/setting_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting_page/presentation/pages/setting_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/setting_page/presentation/widgets/choose_language_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting_page/presentation/widgets/choose_language_bottom_sheet.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/side_drawer/presentation/bloc/side_drawer_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/side_drawer/presentation/bloc/side_drawer_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/side_drawer/presentation/pages/side_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/side_drawer/presentation/pages/side_drawer_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flavor_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flavor_config.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/injection_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/injection_container.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main_common.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_common.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +105,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Flutter.dev.executor": "Debug",
+    "Flutter.dev.executor": "Run",
     "Makefile Target.runApp.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -113,28 +119,28 @@
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/mac/Desktop/Projects/god_father_flutter/lib/features/role_list_page/domain/entities",
+    "last_opened_file_path": "/Users/mac/Desktop/Projects/god_father_flutter/lib/features/role_list_page/data/dataSoources",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Dart",
+    "settings.editor.selected.configurable": "dart.settings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/features/role_list_page/data/dataSoources" />
+      <recent name="$PROJECT_DIR$/lib/features/role_list_page/data/repossitories" />
+      <recent name="$PROJECT_DIR$/lib/features/role_list_page/domain/repositories" />
+      <recent name="$PROJECT_DIR$/lib/features/role_list_page/domain/usecases" />
       <recent name="$PROJECT_DIR$/lib/features/role_list_page/domain/entities" />
-      <recent name="$PROJECT_DIR$/lib/features/role_list_page/data/model" />
-      <recent name="$PROJECT_DIR$/assets/icons" />
-      <recent name="$PROJECT_DIR$/lib/features" />
-      <recent name="$PROJECT_DIR$/android/app/src/prod/res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/core/widgets" />
+      <recent name="$PROJECT_DIR$/assets/sounds" />
+      <recent name="$PROJECT_DIR$/assets/json/playerRoleJson" />
       <recent name="$PROJECT_DIR$/lib/features/role_list_page/presentation" />
       <recent name="$PROJECT_DIR$/assets/Images" />
-      <recent name="$PROJECT_DIR$/lib/features/hidden_drawer/presentation/pages" />
-      <recent name="$PROJECT_DIR$/lib/features" />
-      <recent name="$PROJECT_DIR$/android/app/src/dev/res" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.dev">
@@ -170,6 +176,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile Target.runApp" />
+        <item itemvalue="Flutter.flavor_config.dart (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -194,71 +201,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>116</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>115</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>109</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/list_display.dart</url>
-          <line>44</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/widgets/list_display.dart</url>
-          <line>46</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>141</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>143</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>148</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>144</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>149</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>177</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/player_list_page/presentation/bloc/player_list_bloc.dart</url>
-          <line>247</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

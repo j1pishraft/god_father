@@ -1,10 +1,11 @@
-// import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:god_father/core/appThemes/custom_style.dart';
+import 'package:god_father/core/widgets/custom_check_box.dart';
 import 'package:god_father/enums/language_enum.dart';
-
-import '../../../../core/appThemes/app_themes.dart';
+import 'package:intl/intl.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../injection_container.dart';
 import '../../../setting_page/presentation/bloc/setting_bloc.dart';
 import '../../domain/entities/player_entity.dart';
@@ -23,141 +24,41 @@ class PlayerListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var l10n = AppLocalizations.of(context);
     return BlocProvider(
       create: (_) {
         final bloc = sl<PlayerListBloc>();
-        bloc.add(PlayerListStarted());
+        bloc.add(PlayerListFetched());
         return bloc;
       },
-      child: BlocSelector<SettingsBloc, SettingState, ThemeMode?>(
-          selector: (state) => state.themeMode,
-          builder: (context, themeMode) {
+      child: BlocSelector<SettingsBloc, SettingState, (ThemeMode?, Locale? locale)>(
+          selector: (state) => (state.themeMode, state.selectedLanguage?.locale),
+          builder: (context, item) {
+            final themeMode = item.$1;
+            final locale = item.$2;
             return GestureDetector(
               onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
               child: BlocSelector<PlayerListBloc, PlayerListState, (List<Player>?, bool?, bool?)>(
                 selector: (state) => (state.players, state.isDeleteViewPressed, state.isAllSelected),
                 builder: (context, items) {
-                  final isAllSelected = items.$3;
-                  final isDeletePressed = items.$2;
                   final players = items.$1;
+                  final isDeletePressed = items.$2;
+                  final isAllSelected = items.$3;
                   return Scaffold(
                     extendBodyBehindAppBar: true,
                     // backgroundColor: Theme.of(context).colorScheme.surface,
-                    backgroundColor: isDeletePressed! ? CustomColor.homePageDeleteModeBackgroundColor : CustomColor.backGroundColor,
-                    appBar: AppBar(
-                      backgroundColor: isDeletePressed ? CustomColor.customRed : CustomColor.appbarColor,
-                      leading: IconButton(
-                        color: Colors.yellow,
-                        onPressed: onMenuPressed,
-                        icon: const Icon(Icons.menu),
-                      ),
-                      centerTitle: true,
-                      actions: [
-                        players == null || players.isEmpty
-                            ? Container()
-                            : isDeletePressed == true
-                                ? Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Checkbox(
-                                        fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
-                                          if (states.contains(WidgetState.selected)) {
-                                            return Colors.green; // Color when the checkbox is selected
-                                          }
-                                          return Colors.white; // Color when the checkbox is unselected
-                                        }),
-                                        side: WidgetStateBorderSide.resolveWith(
-                                          (Set<WidgetState> states) {
-                                            if (states.contains(WidgetState.selected)) {
-                                              return const BorderSide(
-                                                  color: Colors.red, width: 1); // Border color when selected
-                                            }
-                                            return const BorderSide(
-                                                color: Colors.red, width: 1); // Border color when unselected
-                                          },
-                                        ),
-                                        checkColor: ThemeManager.currentThemeMode == ThemeMode.light
-                                            ? Colors.green
-                                            : Colors.white,
-                                        activeColor: ThemeManager.currentThemeMode == ThemeMode.light
-                                            ? Colors.green
-                                            : Colors.green,
-                                        overlayColor: ThemeManager.currentThemeMode == ThemeMode.light
-                                            ? WidgetStateProperty.all(Colors.black)
-                                            : WidgetStateProperty.all(Colors.white),
-                                        value: isAllSelected ?? false,
-                                        onChanged: (bool? value) {
-                                          BlocProvider.of<PlayerListBloc>(context)
-                                              .add(PlayerListSelectAllPressed(value!));
-                                        },
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          BlocProvider.of<PlayerListBloc>(context)
-                                              .add(const PlayerListDeleteViewButtonPressed());
-                                          // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListClearPressed());
-                                        },
-                                        icon: const Icon(Icons.cancel_outlined, color: Colors.yellow),
-                                      ),
-                                    ],
-                                  )
-                                : Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          BlocProvider.of<PlayerListBloc>(context)
-                                              .add(const PlayerListDeleteViewButtonPressed());
-                                          // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListDeleteButtonPressed());
-                                          // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListClearPressed());
-                                        },
-                                        icon: const Icon(Icons.delete_forever, color: Colors.red),
-                                      ),
-                                    ],
-                                  ),
-                      ],
-                      title: Text(
-                          isDeletePressed
-                              ? AppLocalizations.of(context)!.removePlayer
-                              : AppLocalizations.of(context)!.playerList,
-                          style: CustomStyles.heading1),
-                    ),
+                    backgroundColor:
+                    isDeletePressed! ? CustomColor.homePageDeleteModeBackgroundColor : CustomColor.backGroundColor,
+                    appBar: _appBar(
+                        locale: locale,
+                        players: players,
+                        context: context,
+                        isAllSelected: isAllSelected ?? false,
+                        isDeletePressed: isDeletePressed),
                     body: Stack(
                       children: [
-                        BlocSelector<PlayerListBloc, PlayerListState, bool?>(
-                            selector: (state) => state.isDeleteViewPressed,
-                            builder: (context, isDeleteViewPressed) {
-                              return isDeleteViewPressed!
-                                  ? Container()
-                                  : BlocSelector<SettingsBloc, SettingState, Locale?>(
-                                      selector: (state) => state.selectedLanguage?.locale,
-                                      builder: (context, cLocale) {
-                                        final locale = cLocale;
-                                        return locale?.languageCode == 'en'
-                                            ? Positioned(
-                                                left: 0,
-                                                bottom: 0,
-                                                top: 0,
-                                                child: Center(
-                                                  child: Image.asset(
-                                                    "assets/images/r_godfather.png",
-                                                  ),
-                                                ),
-                                              )
-                                            : Positioned(
-                                                right: 0,
-                                                bottom: 0,
-                                                top: 0,
-                                                child: Center(
-                                                  child: Image.asset(
-                                                    "assets/images/flip_l_godfather.png",
-                                                  ),
-                                                ),
-                                              );
-                                      });
-                            }),
-                        _buildBody(context),
+                        _backGroundImage(),
+                        _buildBody(locale!, l10n),
                       ],
                     ),
                   );
@@ -168,37 +69,161 @@ class PlayerListPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  _backGroundImage() {
+    return BlocSelector<PlayerListBloc, PlayerListState, bool?>(
+        selector: (state) => state.isDeleteViewPressed,
+        builder: (context, isDeleteViewPressed) {
+          return isDeleteViewPressed!
+              ? Container()
+              : BlocSelector<SettingsBloc, SettingState, Locale?>(
+              selector: (state) => state.selectedLanguage?.locale,
+              builder: (context, cLocale) {
+                final locale = cLocale;
+                return locale?.languageCode == 'en'
+                    ? Positioned(
+                  left: 0,
+                  bottom: 0,
+                  top: 0,
+                  child: Center(
+                    child: Image.asset(
+                      ImageAssetPaths.homePageBackgroundImageEnLocale,
+                    ),
+                  ),
+                )
+                    : Positioned(
+                  right: 0,
+                  bottom: 0,
+                  top: 0,
+                  child: Center(
+                    child: Image.asset(
+                      ImageAssetPaths.homePageBackgroundImageFaLocale,
+                    ),
+                  ),
+                );
+              });
+        });
+  }
+
+  _appBar({required bool isAllSelected,
+    required bool isDeletePressed,
+    List<Player>? players,
+    required BuildContext context,
+    Locale? locale}) {
+    return AppBar(
+      backgroundColor: isDeletePressed ? CustomColor.customRed : CustomColor.appbarColor,
+      centerTitle: true,
+      leading: IconButton(
+        color: Colors.yellow,
+        onPressed: onMenuPressed,
+        icon: const Icon(Icons.menu),
+      ),
+      title:  Text(
+          isDeletePressed
+              ? AppLocalizations.of(context)!.removePlayer
+              : AppLocalizations.of(context)!.playerList,
+          style: CustomStyles.heading1),
+      // Column(
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   children: [
+      //     Wrap(
+      //       crossAxisAlignment: WrapCrossAlignment.center,
+      //       direction: Axis.vertical,
+      //       // spacing: 10.0, // Space between elements vertically
+      //       // runSpacing: 10.0, // Space between rows horizontally
+      //       children: [
+      //         Text(
+      //             isDeletePressed
+      //                 ? AppLocalizations.of(context)!.removePlayer
+      //                 : AppLocalizations.of(context)!.playerList,
+      //             style: CustomStyles.heading1),
+      //         players != null && players.isNotEmpty
+      //             ? Text(
+      //             _getTotalPlayersCount(players.length, locale.toString()),
+      //             style: CustomStyles.heading1)
+      //             : Container(),
+      //       ],
+      //     ),
+      //   ],
+      // ),
+      actions: [
+        players == null || players.isEmpty
+            ? Container()
+            : isDeletePressed == true
+            ? Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CustomCheckBox(
+              initialValue: isAllSelected,
+              onChanged: (value) {
+                BlocProvider.of<PlayerListBloc>(context).add(PlayerListSelectAllPressed(value!));
+              },
+            ),
+            IconButton(
+              onPressed: () {
+                BlocProvider.of<PlayerListBloc>(context).add(const PlayerListDeleteViewButtonPressed());
+                // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListClearPressed());
+              },
+              icon: const Icon(Icons.cancel_outlined, color: Colors.yellow),
+            ),
+          ],
+        )
+            : IconButton(
+          onPressed: () {
+            BlocProvider.of<PlayerListBloc>(context).add(const PlayerListDeleteViewButtonPressed());
+            // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListDeleteButtonPressed());
+            // BlocProvider.of<PlayerListBloc>(context).add(const PlayerListClearPressed());
+          },
+          icon: const Icon(Icons.delete_forever, color: Colors.red),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBody(Locale locale, var l10n) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            const SizedBox(height: 10),
+            // const SizedBox(height: 10),
             BlocBuilder<PlayerListBloc, PlayerListState>(builder: (context, state) {
               final bloc = BlocProvider.of<PlayerListBloc>(context);
               if (state.status == PlayerListStatus.loading) {
                 return const LoadingWidget();
               } else if (state.status == PlayerListStatus.loaded) {
                 return bloc.state.players?.isEmpty == true
-                    ? const MessageDisplay(
-                        message: 'Please add player!',
-                      )
-                    : const ListToDisplay();
+                    ? MessageDisplay(
+                  defaultMessage: l10n.somethingWentWrong,
+                  message: l10n.pleaseAddPlayers,
+                )
+                    : Expanded(child: ListToDisplay(locale: locale,));
               } else if (state.status == PlayerListStatus.error) {
                 //TODO: Think of a proper way to send the message here. what if we need to localize stuff????
                 return MessageDisplay(
+                  defaultMessage: l10n.somethingWentWrong,
                   message: state.errorMessage,
                 );
               } else {
                 return Container();
               }
             }),
-            const SizedBox(height: 20),
-            const AddToListButton(),
+            const SizedBox(height: 10),
+            AddToListButton(locale: locale,),
           ],
         ),
       ),
     );
   }
+
+  String _getActivePlayersCount(List<Player> players, String locale) {
+    return ConvertNoLocale.convertNoLocale(players
+        .where((player) => player.isActive)
+        .length, locale);
+  }
+
+  String _getTotalPlayersCount(int playersLength, String locale) {
+    return ConvertNoLocale.convertNoLocale(playersLength, locale);
+  }
+
 }

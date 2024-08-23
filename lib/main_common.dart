@@ -5,7 +5,7 @@ import 'package:god_father/features/setting_page/presentation/bloc/setting_bloc.
 import 'app/routes/app_router.dart';
 import 'core/appThemes/app_themes.dart';
 
-import 'features/side_drawer/presentation/pages/side_drawer_page.dart';
+import 'core/config_reader/config_reader.dart';
 import 'flavor_config.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter/material.dart';

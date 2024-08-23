@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:god_father/core/appThemes/custom_style.dart';
 
-import '../../../../core/constants/color_const.dart';
 import '../../../../enums/language_enum.dart';
 import '../bloc/setting_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

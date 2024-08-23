@@ -5,8 +5,8 @@ import 'package:god_father/core/error/failures.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../domain/entities/player_entity.dart';
-import '../../domain/repositories/players_list_repository.dart';
-import '../dataSources/players_list_local_data_source.dart';
+import '../../domain/repositories/player_list_repository.dart';
+import '../dataSources/player_list_local_data_source.dart';
 import '../model/player_model.dart';
 
 // typedef _ConcreteOrRandomChooser = Future<NumberTrivia?>? Function();
@@ -19,7 +19,6 @@ class PlayerListRepositoryImpl implements PlayerListRepository {
     required this.localDataSource,
   });
 
-
   @override
   Future<List<Player>> getPlayersList() async {
     // playerList = PlayerListModel.fromEntity(playerList as PlayerListModel)
@@ -31,16 +30,22 @@ class PlayerListRepositoryImpl implements PlayerListRepository {
       List<dynamic> jsonList = json.decode(playerString);
 
       // Map dynamic list to list of PlayerModel instances
-      playerList = jsonList.map((jsonMap) => PlayerModel.fromJson(jsonMap)).map<Player>((model) => Player.withRole(name: model.name, role: model.role, isActive: model.isActive)).toList();
-
-
-    } return playerList;
+      playerList = jsonList
+          .map((jsonMap) => PlayerModel.fromJson(jsonMap))
+          .map<Player>(
+              (model) => Player.withRole(name: model.name, playerRole: model.playerRole, isActive: model.isActive))
+          .toList();
+    }
+    return playerList;
   }
 
   @override
   Future<Either<Failure, List<Player>>> updatePlayersList(List<Player> playerList) async {
     try {
-      List<PlayerModel> playersModels = playerList.map((player) => PlayerModel(name: player.name, role: player.role, isActive: player.isActive)).toList();
+      List<PlayerModel> playersModels = playerList
+          .map((player) =>
+              PlayerModel(newName: player.name, newPlayerRole: player.playerRole, newIsActive: player.isActive))
+          .toList();
       final jsonList = json.encode(playersModels);
       localDataSource.cachePlayers(jsonList);
       final result = await getPlayersList();

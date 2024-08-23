@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../repositories/players_list_repository.dart';
+import '../repositories/player_list_repository.dart';
 
 
-class ClearPlayersListUsecase extends UseCase<bool, NoParams> {
+class ClearPlayerListUseCase extends UseCase<bool, NoParams> {
   final PlayerListRepository repository;
 
-  ClearPlayersListUsecase(this.repository);
+  ClearPlayerListUseCase(this.repository);
 
   @override
   Future<Either<Failure, bool>> call(NoParams params) async {

@@ -1,0 +1,187 @@
+[
+  {
+    "roleName": "شهروند ساده",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1,
+    "isSelected": true
+  },
+  {
+    "roleName": "هم شهری کین",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+  {
+    "roleName": "لئون",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "کاراگاه",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "جان سخت",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "حرفه ای",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "شهردار",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "دکتر",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "روانپزشک",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "کنستانتین",
+    "description": "test 1",
+    "category": 1,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "مافیا ساده",
+    "description": "test 2",
+    "category": 2,
+    "canWakeupAtNight": false,
+    "wakeupPriority": 0,
+    "isCommonRole": true,
+    "count": 1,
+    "isSelected": true
+  },
+
+  {
+    "roleName": "پدر خوانده",
+    "description": "test 1",
+    "category": 2,
+    "canWakeupAtNight": true,
+    "wakeupPriority": 0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "دکتر مافیا",
+    "description": "test 2",
+    "category": 2,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "جوکر مافیا",
+    "description": "test 3",
+    "category": 2,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+  {
+    "roleName": "ماتادور مافیا",
+    "description": "test 3",
+    "category": 2,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+  {
+    "roleName": "گودمن مافیا",
+    "description": "test 3",
+    "category": 2,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+
+  {
+    "roleName": "جک",
+    "description": "test 3",
+    "category": 3,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+  {
+    "roleName": "نوستراداموس",
+    "description": "test 3",
+    "category": 3,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  },
+  {
+    "roleName": "SherLook",
+    "description": "test 3",
+    "category": 3,
+    "canWakeupAtNight": true,
+    "wakeupPriority":0,
+    "isCommonRole": false,
+    "count": 1
+  }
+]

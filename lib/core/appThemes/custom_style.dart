@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:god_father/core/appThemes/app_themes.dart';
-import 'package:god_father/core/constants/color_const.dart';
 
 extension CustomStyles on TextTheme {
   static TextStyle get heading1 {
@@ -14,6 +13,14 @@ extension CustomStyles on TextTheme {
   static TextStyle get sideMenuButtonTextStyle {
     return const TextStyle(
       fontSize: 18,
+      color: Colors.yellow,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle get homePageButtonTextStyle {
+    return const TextStyle(
+      fontSize: 15,
       color: Colors.yellow,
       fontWeight: FontWeight.bold,
     );
@@ -53,8 +60,8 @@ extension CustomColor on Color {
     return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.yellow : Colors.white ;
   }
 
-  static Color get addButtonColor {
-    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.green.shade500 : Colors.green.shade800;
+  static Color get customGreen {
+    return ThemeManager.currentThemeMode == ThemeMode.light ? Colors.green.shade500 : Colors.green.shade700;
   }
 
 

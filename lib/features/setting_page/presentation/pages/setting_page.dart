@@ -7,7 +7,6 @@ import 'package:god_father/features/setting_page/presentation/bloc/setting_bloc.
 import 'package:god_father/features/setting_page/presentation/widgets/choose_language_bottom_sheet.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../core/appThemes/app_themes.dart';
 import '../../../../core/appThemes/gf_app_themes.dart';
 import '../../../side_drawer/presentation/pages/side_drawer_page.dart';
 import 'package:provider/provider.dart' as provider;
@@ -19,7 +18,6 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final fontSize = Theme.of(context).textTheme;
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       // backgroundColor: Theme.of(context).colorScheme.surface,

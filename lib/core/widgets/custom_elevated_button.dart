@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:god_father/core/appThemes/custom_style.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final Color backgroundColor;
@@ -35,9 +36,7 @@ class CustomElevatedButton extends StatelessWidget {
 
       child: Text(
         title,
-        style: const TextStyle(
-          color: Colors.yellow,
-        ),
+        style: CustomStyles.homePageButtonTextStyle
         // style: const TextStyle(color: Colors.white),
       ),
     );

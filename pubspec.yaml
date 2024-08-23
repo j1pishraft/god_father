@@ -27,9 +27,21 @@ dependencies:
   # local cache
   shared_preferences: ^2.2.2
   # Navigator
-
   go_router: ^14.2.0
-#  auto_route: ^7.8.4
+  #auto_route: ^7.8.4
+  fluttertoast: ^8.2.6
+
+  audioplayers: 6.0.0
+
+  flutter_expanded_tile: ^0.4.0
+
+
+
+
+  #Contains utility functions and classes in the style of dart:collection to make working with collections easier.
+  #collection: ^1.19.0
+
+
 
   # this list has ability to scroll to specific index
   scrollable_positioned_list: ^0.3.8
@@ -81,8 +93,11 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/sounds/
+    - assets/json/playerRolesJson/
     - assets/locales/en.json
     - assets/locales/fa.json
+    - assets/json/
     - config/
 
 
